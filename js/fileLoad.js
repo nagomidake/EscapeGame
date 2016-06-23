@@ -1,5 +1,4 @@
 // 読み込む外部ファイル情報
-/*
 var manifest = [
     {src: "/images/4ORI.png"},
     {src: "/images/Aircon_Close.png"},
@@ -123,4 +122,3 @@ function handleFileLoadComplete(event) {
 function handleComplete() {
     console.log("LOAD COMPLETE");
 }
-*/
