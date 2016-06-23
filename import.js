@@ -16,3 +16,4 @@ document.write('<script type="text/javascript" src="js/room2.js"></script>');
 document.write('<script type="text/javascript" src="js/room3.js"></script>');
 document.write('<script type="text/javascript" src="js/room4.js"></script>');
 document.write('<script type="text/javascript" src="js/sound.js"></script>');
+document.write('<script type="text/javascript" src="js/loadingScreen.js"></script>');

@@ -147,6 +147,8 @@ function insertAAbattery(){
     var mainBmp = new createjs.Bitmap("images/Rimocon_URA_Open_Denchi.png");
     escapeContainer.addChild(bmpScaler(mainBmp));
 
+    showMessage("電池を入れた");
+    
     //バックボタン
     var backButton = createBackButton();
     escapeContainer.addChild(backButton);
@@ -194,6 +196,7 @@ function detailCalc(){
   if(AAbatteryF){
     var mainBmp = new createjs.Bitmap("images/Cal_URA_Open_NoDENCHI.png");
     escapeContainer.addChild(bmpScaler(mainBmp));
+    showMessage("電池を取り出した");
   }else{
     var mainBmp = new createjs.Bitmap("images/Cal_URA_Open.png");
     escapeContainer.addChild(bmpScaler(mainBmp));
@@ -206,7 +209,6 @@ function detailCalc(){
 
   if(!AAbatteryF){
     toItemClick.addEventListener("click", getAAbattery);
-    showMessage("電池を取り出した");
   }
   //バックボタン
   var backButton = createBackButton();

@@ -58,7 +58,7 @@ function goToDoor(){
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
-  
+
   var doorBmp = new createjs.Bitmap("images/Door.png");
   escapeContainer.addChild(bmpScaler(doorBmp));
 
@@ -589,6 +589,7 @@ function boxWithCompass(){
     escapeContainer.removeAllChildren();
     mainContainer.addChild(escapeContainer);
 
+    showMessage("コンパスをはめた");
     playSound("Switch");
 
     var mainBmp = new createjs.Bitmap("images/Box_OnCompass.png");
