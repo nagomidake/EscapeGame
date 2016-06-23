@@ -59,7 +59,8 @@ function goToDoor(){
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
 
-  var doorBmp = new createjs.Bitmap("images/Door.png");
+  image = loadQueue.getResult("Door");
+  var doorBmp = new createjs.Bitmap(image);
   escapeContainer.addChild(bmpScaler(doorBmp));
 
   //ドアを開けるための領域

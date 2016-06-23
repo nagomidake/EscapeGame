@@ -18,7 +18,7 @@ var manifest = [
     {src: "/images/Denchi.png"},
     {src: "/images/Diary.png"},
     {src: "/images/Diary_Open.png"},
-    {src: "/images/Door.png"},
+    {src: "images/Door.png", id: "Door"},
     {src: "/images/Door_Open.png"},
     {src: "/images/DVD.png"},
     {src: "/images/DVD+KAMI.png"},
