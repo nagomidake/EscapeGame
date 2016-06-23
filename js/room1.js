@@ -58,10 +58,9 @@ function goToDoor(){
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
-
-  var image = loadQueue.getResult("images/Door.png");
-  var mainBmp = new createjs.Bitmap(image);
-  escapeContainer.addChild(bmpScaler(mainBmp));
+  
+  var doorBmp = new createjs.Bitmap("images/Door.png");
+  escapeContainer.addChild(bmpScaler(doorBmp));
 
   //ドアを開けるための領域
   var toOpenDoor = new createMoveButton("", 190, 435, "rgba(255, 255, 255, 0)");
