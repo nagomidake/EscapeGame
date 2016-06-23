@@ -19,25 +19,6 @@ var Diary = new createjs.Bitmap("images/Diary.png");
 var KeyOfDoor = new createjs.Bitmap("images/Key3.png");
 //var PaperOfHer = new createjs.Bitmap("");
 
-/*
-var itemList = [
-  "Ring",
-  "Cutter",
-  "DVDCase",
-  "DVDPaper",
-  "Paper2",
-  "Calcurator",
-  "AAbattery",
-  "Remocon",
-  "KeyOfBookShelf",
-  "KeyOfCloset",
-  "ScrewDriver",
-  "RingCase",
-  "PaperOfHer",
-  "Diary"
-];
-*/
-
 var itemList = new Array();
 
 //現在選択されていアイテム名（文字列型）
@@ -158,7 +139,7 @@ function getRing(){
 
 function getCutter(){
   playSound("itemGet");
-  
+
   CutterF = true;
 
   thisItem = itemList[1];
@@ -185,6 +166,7 @@ function getCutter(){
 }
 
 function getKey1(){
+  playSound("itemGet");
   KeyOfBookShelfF = true;
 
   thisItem = itemList[2];
@@ -211,6 +193,7 @@ function getKey1(){
 }
 
 function getDVDCase(){
+  playSound("itemGet");
   DVDCaseF = true;
 
   thisItem = itemList[3];
@@ -237,6 +220,7 @@ function getDVDCase(){
 }
 
 function getDVDPaper(){
+  playSound("itemGet");
   DVDPaperF = true;
 
   thisItem = itemList[4];
@@ -263,6 +247,7 @@ function getDVDPaper(){
 }
 
 function getRimocon(){
+  playSound("itemGet");
   RimoconF = true;
 
   thisItem = itemList[5];
@@ -289,6 +274,7 @@ function getRimocon(){
 }
 
 function getCalc(){
+  playSound("itemGet");
   CalcuratorF = true;
 
   thisItem = itemList[6];
@@ -315,6 +301,7 @@ function getCalc(){
 }
 
 function getKey2(){
+  playSound("itemGet");
   KeyOfClosetF = true;
 
   thisItem = itemList[7];
@@ -341,6 +328,7 @@ function getKey2(){
 }
 
 function getNumberPaper(){
+  playSound("itemGet");
   NumberPaperF = true;
 
   thisItem = itemList[8];
@@ -367,6 +355,7 @@ function getNumberPaper(){
 }
 
 function getAAbattery(){
+  playSound("itemGet");
   AAbatteryF = true;
 
   thisItem = itemList[9];
@@ -393,6 +382,7 @@ function getAAbattery(){
 }
 
 function getCompass(){
+  playSound("itemGet");
   CompassF = true;
 
   thisItem = itemList[10];
@@ -419,6 +409,7 @@ function getCompass(){
 }
 
 function getDiary(){
+  playSound("itemGet");
   DiaryF = true;
 
   thisItem = itemList[11];
@@ -445,6 +436,7 @@ function getDiary(){
 }
 
 function getScrewDriver(){
+  playSound("itemGet");
   ScrewDriverF = true;
 
   thisItem = itemList[12];
@@ -471,6 +463,7 @@ function getScrewDriver(){
 }
 
 function getDoorKey(){
+  playSound("itemGet");
   KeyOfDoorF = true;
 
   thisItem = itemList[13];

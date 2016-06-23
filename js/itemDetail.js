@@ -36,6 +36,8 @@ function dvdCase(){
     itemList[3].image = new createjs.Bitmap("images/DVD+KAMI.png").image;
     changeBlackBox(itemList[4]);
 
+    showMessage("紙をまきつけた");
+
     //バックボタン
     var backButton = createBackButton();
     escapeContainer.addChild(backButton);
@@ -44,6 +46,8 @@ function dvdCase(){
     returnRoom(backButton);
 
     mainContainer.addChild(escapeContainer);
+  }else{
+    showMessage("彼女が好きだったDVDだ");
   }
 }
 
@@ -59,6 +63,7 @@ function dvdPaper(){
     escapeContainer.addChild(bmpScaler(mainBmp));
 
     itemList[4].image = new createjs.Bitmap("images/KIRINUKI_Paper_Cut.png").image
+    showMessage("丸に沿って切り取った");
 
     //バックボタン
     var backButton = createBackButton();
@@ -68,6 +73,8 @@ function dvdPaper(){
     returnRoom(backButton);
 
     mainContainer.addChild(escapeContainer);
+  }else{
+    showMessage("切り取るための丸が書かれている");
   }
 }
 
@@ -148,6 +155,8 @@ function insertAAbattery(){
     returnRoom(backButton);
 
     mainContainer.addChild(escapeContainer);
+  }else{
+    showMessage("電池が入っていないようだ");
   }
 }
 
@@ -195,8 +204,10 @@ function detailCalc(){
   toItemClick.y = 80;
   escapeContainer.addChild(toItemClick);
 
-  toItemClick.addEventListener("click", getAAbattery);
-
+  if(!AAbatteryF){
+    toItemClick.addEventListener("click", getAAbattery);
+    showMessage("電池を取り出した");
+  }
   //バックボタン
   var backButton = createBackButton();
   escapeContainer.addChild(backButton);
@@ -211,6 +222,8 @@ function diary(){
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
+
+  playSound("Page");
 
   var mainBmp = new createjs.Bitmap("images/Diary_Open.png");
   escapeContainer.addChild(bmpScaler(mainBmp));

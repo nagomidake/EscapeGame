@@ -1,5 +1,5 @@
-document.write('<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>');
 document.write('<script type="text/javascript" src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>');
+document.write('<script type="text/javascript" src="js/fileLoad.js"></script>');
 document.write('<script type="text/javascript" src="js/functions.js"></script>');
 document.write('<script type="text/javascript" src="js/button.js"></script>');
 document.write('<script type="text/javascript" src="js/gameMain.js"></script>');

@@ -55,14 +55,13 @@ function goToAircon(){
   }else{
     var mainBmp = new createjs.Bitmap("images/Aircon_Close.png");
     escapeContainer.addChild(bmpScaler(mainBmp));
-
+  }
     //エアコンをつける為の領域
     var airconOn = new createMoveButton("", 640, 270, "rgba(255, 255, 255, 0)");
     airconOn.x = 80;
     airconOn.y = 190;
     escapeContainer.addChild(airconOn);
     airconOn.addEventListener("click", goAirconOn);
-  }
 
   //バックボタン
   var backButton = createBackButton();
@@ -77,6 +76,9 @@ function goToAircon(){
 function goAirconOn(){
   if(rimoconPowerF && selectItemName == "Rimocon"){
     airconONF = true;
+  }
+
+  if(airconONF){
 
     //上画面の子要素をすべて消す
     escapeContainer.removeAllChildren();
@@ -89,10 +91,14 @@ function goAirconOn(){
     var backButton = createBackButton();
     escapeContainer.addChild(backButton);
 
+    showMessage("エアコンから暖かい風がでている");
+
     //ボタンクリック時のイベント登録
     backButton.addEventListener("click", goToRoom3);
 
     mainContainer.addChild(escapeContainer);
+  }else if(!airconONF){
+    showMessage("エアコンがあるが、動いていないようだ");
   }
 }
 
@@ -152,6 +158,8 @@ function goLookSouthPaper(){
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
+
+  playSound("Page");
 
   var mainBmp = new createjs.Bitmap("images/Sofa_4ORIShow.png");
   escapeContainer.addChild(bmpScaler(mainBmp));

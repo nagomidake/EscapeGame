@@ -118,6 +118,8 @@ function goOpenCurtain(){
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
 
+  playSound("Curtain");
+
   if(CutterF && !airconONF){
     var mainBmp = new createjs.Bitmap("images/Window_Open_NoCutter.png");
     escapeContainer.addChild(bmpScaler(mainBmp));
@@ -210,6 +212,8 @@ function goEastLookPaper(){
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
 
+  playSound("Page");
+
   var mainBmp = new createjs.Bitmap("images/Window_Open_4ORIShow.png");
   escapeContainer.addChild(bmpScaler(mainBmp));
 
@@ -289,5 +293,7 @@ function goRemoveScrew(){
     backButton.addEventListener("click", goToRoom2);
 
     mainContainer.addChild(escapeContainer);
+  }else{
+    showMessage("ネジで固定されている");
   }
 }

@@ -69,9 +69,11 @@ function incNum4(){
 }
 
 function codeCheck(index, Num){
+  playSound("NumberButton");
   CodeNumber[index] = Num;
   if(CodeNumber.toString() == CorrectCN.toString()){
     NumberCipherF = true;
+    playSound("Success");
     alert("開いたようだ");
     openMidShelf();
   }

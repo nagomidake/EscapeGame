@@ -149,6 +149,8 @@ function openLeftCloset(){
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
 
+  playSound("Shelf");
+
   if(ScrewDriverF){
     var mainBmp = new createjs.Bitmap("images/TANSU_Left_Open_NoScrewDtiver.png");
     escapeContainer.addChild(bmpScaler(mainBmp));
@@ -204,14 +206,17 @@ function goToRightCloset(){
 }
 
 function openRightCloset(){
-  if(selectItemName == "KeyOfCloset"){
+  if(selectItemName == "KeyOfCloset" && !ClosetOpenF){
     ClosetOpenF = true;
+    playSound("Key");
   }
 
   if(ClosetOpenF){
     //上画面の子要素をすべて消す
     escapeContainer.removeAllChildren();
     mainContainer.addChild(escapeContainer);
+
+    playSound("Shelf");
 
     if(NumberPaperF){
       var mainBmp = new createjs.Bitmap("images/TANSU_Right_Open_NoKUSHAKUSHA_NoCompass.png");
@@ -245,6 +250,8 @@ function openRightCloset(){
     backButton.addEventListener("click", goToRoom4);
 
     mainContainer.addChild(escapeContainer);
+  }else{
+    showMessage("鍵がかかっているようだ");
   }
 }
 
@@ -252,6 +259,8 @@ function goLookWestPaper(){
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
+
+  playSound("Page");
 
   var mainBmp = new createjs.Bitmap("images/TANSU_Right_Open_4ORIShow.png");
   escapeContainer.addChild(bmpScaler(mainBmp));
@@ -318,6 +327,7 @@ function goToBackCalenderButton(){
 }
 
 function goToSwitchOn(){
-  alert("スイッチオン！");
+  showMessage("スイッチを押した");
+  playSound("Switch");
   switchFlag = true;
 }

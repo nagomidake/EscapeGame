@@ -80,8 +80,9 @@ function goToDoor(){
 }
 
 function openDoor(){
-  if(selectItemName == "KeyOfDoor"){
+  if(selectItemName == "KeyOfDoor" && !doorOpenF){
     doorOpenF = true;
+    playSound("Key");
   }
 
   if(doorOpenF){
@@ -196,8 +197,9 @@ function goToBooks(){
 }
 
 function goToBooksOpen(){
-    if(selectItemName == "KeyOfBookShelf"){
+    if(selectItemName == "KeyOfBookShelf" && !BookOpenF){
       BookOpenF = true;
+      playSound("Key");
     }
 
     if(BookOpenF){
@@ -224,6 +226,8 @@ function goToBooksOpen(){
       backButton.addEventListener("click", goToRoom1);
 
       mainContainer.addChild(escapeContainer);
+    }else{
+      showMessage("鍵がかかっているようだ");
     }
 }
 
@@ -257,6 +261,8 @@ function goLookNorthPaper(){
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
+
+  playSound("Page");
 
   var mainBmp = new createjs.Bitmap("images/HONDANA_Left_Open_4ORIShow.png");
   escapeContainer.addChild(bmpScaler(mainBmp));
@@ -327,6 +333,8 @@ function goToOpenHighShelf(){
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
+
+  playSound("Drawer");
 
   if(CalcuratorF && KeyOfClosetF){
     var mainBmp = new createjs.Bitmap("images/HONDANA_Right1_Open_AllNothing.png");
@@ -422,6 +430,8 @@ function openMidShelf(){
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
 
+  playSound("Drawer");
+
   if(CompassF){
     var mainBmp = new createjs.Bitmap("images/HONDANA_Right2_Open_NoCompass.png");
     escapeContainer.addChild(bmpScaler(mainBmp));
@@ -450,6 +460,8 @@ function goToLowShelf(){
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
+
+  playSound("Drawer");
 
   if(DVDCaseF && DVDPaperF){
     var mainBmp = new createjs.Bitmap("images/HONDANA_Right3_Open_AllNothing.png");
@@ -577,6 +589,8 @@ function boxWithCompass(){
     escapeContainer.removeAllChildren();
     mainContainer.addChild(escapeContainer);
 
+    playSound("Switch");
+
     var mainBmp = new createjs.Bitmap("images/Box_OnCompass.png");
     escapeContainer.addChild(bmpScaler(mainBmp));
 
@@ -615,6 +629,8 @@ function boxWithCompass(){
     backButton.addEventListener("click", goToRoom1);
 
     mainContainer.addChild(escapeContainer);
+  }else{
+    showMessage("何かがはまりそうなくぼみがある");
   }
 }
 
