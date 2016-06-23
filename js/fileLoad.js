@@ -1,7 +1,7 @@
 // 読み込む外部ファイル情報
 var manifest = [
     {src: "/images/4ORI.png"},
-    {src: "images/Aircon_Close.png"},
+    {src: "/images/Aircon_Close.png"},
     {src: "/images/Aircon_Open.png"},
     {src: "/images/ANA_LingCase.png"},
     {src: "/images/blackBox.png"},
