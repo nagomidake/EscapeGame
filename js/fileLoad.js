@@ -1,5 +1,5 @@
 // 読み込む外部ファイル情報
-var imageManifest = [
+var manifest = [
     {src: "/images/4ORI.png"},
     {src: "/images/Aircon_Close.png"},
     {src: "/images/Aircon_Open.png"},
@@ -94,20 +94,20 @@ var imageManifest = [
 ];
 
 // LoadQueueクラス
-var loadImage = new createjs.ImageLoader();
+var loadQueue = new createjs.LoadQueue();
 
 // 並列での読み込み数を設定
-loadImage.setMaxConnections(6);
+loadQueue.setMaxConnections(6);
 
 // 読み込みの進行状況が変化した
-loadImage.addEventListener("progress", handleProgress);
+loadQueue.addEventListener("progress", handleProgress);
 // 1つのファイルを読み込み終わったら
-loadImage.addEventListener("fileload", handleFileLoadComplete);
+loadQueue.addEventListener("fileload", handleFileLoadComplete);
 // 全てのファイルを読み込み終わったら
-loadImage.addEventListener("complete", handleComplete);
+loadQueue.addEventListener("complete", handleComplete);
 
 // 読み込み開始
-loadImage.loadManifest(imageManifest);
+loadQueue.loadManifest(manifest);
 
 function handleProgress(event) {
     // 読み込み率を0.0~1.0で取得
