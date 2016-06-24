@@ -112,7 +112,7 @@ loadQueue.loadManifest(manifest);
 function handleProgress(event) {
     // 読み込み率を0.0~1.0で取得
     var progress = event.progress;
-    //loadingScreen();
+    loadingScreen();
 }
 
 function handleFileLoadComplete(event) {
