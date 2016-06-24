@@ -1,4 +1,5 @@
 document.write('<script type="text/javascript" src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>');
+document.write('<script type="text/javascript" src="js/loadingScreen.js"></script>');
 document.write('<script type="text/javascript" src="js/fileLoad.js"></script>');
 document.write('<script type="text/javascript" src="js/functions.js"></script>');
 document.write('<script type="text/javascript" src="js/button.js"></script>');
@@ -16,4 +17,3 @@ document.write('<script type="text/javascript" src="js/room2.js"></script>');
 document.write('<script type="text/javascript" src="js/room3.js"></script>');
 document.write('<script type="text/javascript" src="js/room4.js"></script>');
 document.write('<script type="text/javascript" src="js/sound.js"></script>');
-document.write('<script type="text/javascript" src="js/loadingScreen.js"></script>');
