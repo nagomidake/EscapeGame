@@ -118,6 +118,7 @@ function handleProgress(event) {
 function handleFileLoadComplete(event) {
     // 読み込んだファイル
     var result = event.result;
+    completeScreen();
 }
 
 function handleComplete() {

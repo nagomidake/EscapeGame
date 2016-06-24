@@ -6,8 +6,6 @@ window.addEventListener("load", init);
 
 //タイトル画面
 function init(){
-  //Completeの文字を消す
-  completeDiv.style.visibility = "hidden";
 
 	//背景画像設定
   var stage = new createjs.Stage("gameCanvas");
