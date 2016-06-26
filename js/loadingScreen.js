@@ -13,5 +13,4 @@ function loadingScreen(per){
 
 function completeScreen(){
   loadingDiv.style.visibility = "hidden";
-  completeDiv.style.visibility = "visible";
 }
