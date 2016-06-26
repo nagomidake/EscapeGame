@@ -6,7 +6,7 @@ completeDiv.style.visibility = "hidden";
 
 function loadingScreen(per){
   loadingDiv.style.visibility = "visible";
-  var percent = [per, "%"].join("");
+  var percent = [(per.toPercision(3)*10), "%"].join("");
   lodingPercent.innerHTML = percent;
 }
 
