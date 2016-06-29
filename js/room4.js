@@ -4,7 +4,7 @@ function goToRoom4(){
   mainContainer.addChild(escapeContainer);
 
   onRoom = 4;
-  CDO.length = 0;
+  returnScreen = function (){goToRoom4()};
 
   //部屋の画像を表示
   var room4Bmp = new createjs.Bitmap("images/Room4.png");
@@ -48,6 +48,11 @@ function goToRoom4(){
 }
 
 function goToCloset(){
+  returnScreen = function (){goToCloset()};
+
+  CDO.length = 0;
+  ClosetSoundF = true;
+
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
@@ -83,6 +88,8 @@ function goToLeftCloset(){
   if(dayCipherF){
     openLeftCloset();
   }else{
+    returnScreen = function (){goToLeftCloset()};
+
     //上画面の子要素をすべて消す
     escapeContainer.removeAllChildren();
     mainContainer.addChild(escapeContainer);
@@ -138,18 +145,24 @@ function goToLeftCloset(){
     SaturdayButton.on("click", dayCipher, null, false, "Sa");
 
     //ボタンクリック時のイベント登録
-    backButton.addEventListener("click", goToRoom4);
+    backButton.addEventListener("click", goToCloset);
 
     mainContainer.addChild(escapeContainer);
   }
 }
 
+var ClosetSoundF = true;
+
 function openLeftCloset(){
+  returnScreen = function (){openLeftCloset()};
+
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
 
-  playSound("Shelf");
+  if(ClosetSoundF){
+    playSound("Shelf");
+  }
 
   if(ScrewDriverF){
     var mainBmp = new createjs.Bitmap("images/TANSU_Left_Open_NoScrewDtiver.png");
@@ -170,7 +183,7 @@ function openLeftCloset(){
   escapeContainer.addChild(backButton);
 
   //ボタンクリック時のイベント登録
-  backButton.addEventListener("click", goToRoom4);
+  backButton.addEventListener("click", goToCloset);
 
   mainContainer.addChild(escapeContainer);
 }
@@ -179,6 +192,8 @@ function goToRightCloset(){
   if(ClosetOpenF){
     openRightCloset();
   }else{
+    returnScreen = function (){goToRightCloset()};
+
     //上画面の子要素をすべて消す
     escapeContainer.removeAllChildren();
     mainContainer.addChild(escapeContainer);
@@ -199,7 +214,7 @@ function goToRightCloset(){
     escapeContainer.addChild(backButton);
 
     //ボタンクリック時のイベント登録
-    backButton.addEventListener("click", goToRoom4);
+    backButton.addEventListener("click", goToCloset);
 
     mainContainer.addChild(escapeContainer);
   }
@@ -212,11 +227,15 @@ function openRightCloset(){
   }
 
   if(ClosetOpenF){
+    returnScreen = function (){openRightCloset()};
+
     //上画面の子要素をすべて消す
     escapeContainer.removeAllChildren();
     mainContainer.addChild(escapeContainer);
 
-    playSound("Shelf");
+    if(ClosetSoundF){
+      playSound("Shelf");
+    }
 
     if(NumberPaperF){
       var mainBmp = new createjs.Bitmap("images/TANSU_Right_Open_NoKUSHAKUSHA_NoCompass.png");
@@ -247,7 +266,7 @@ function openRightCloset(){
     escapeContainer.addChild(backButton);
 
     //ボタンクリック時のイベント登録
-    backButton.addEventListener("click", goToRoom4);
+    backButton.addEventListener("click", goToCloset);
 
     mainContainer.addChild(escapeContainer);
   }else{
@@ -256,6 +275,8 @@ function openRightCloset(){
 }
 
 function goLookWestPaper(){
+  returnScreen = function (){goLookWestPaper()};
+
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
@@ -270,12 +291,14 @@ function goLookWestPaper(){
   escapeContainer.addChild(backButton);
 
   //ボタンクリック時のイベント登録
-  backButton.addEventListener("click", goToRoom4);
+  backButton.addEventListener("click", openRightCloset);
 
   mainContainer.addChild(escapeContainer);
 }
 
 function goToCalender(){
+  returnScreen = function (){goToCalender()};
+
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
@@ -301,6 +324,8 @@ function goToCalender(){
 }
 
 function goToBackCalenderButton(){
+  returnScreen = function (){goToBackCalenderButton()};
+
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
@@ -321,7 +346,7 @@ function goToBackCalenderButton(){
   toSwitchOn.addEventListener("click", goToSwitchOn);
 
   //ボタンクリック時のイベント登録
-  backButton.addEventListener("click", goToRoom4);
+  backButton.addEventListener("click", goToCalender);
 
   mainContainer.addChild(escapeContainer);
 }

@@ -18,3 +18,8 @@ p {
 	font-style: oblique;
 	color: rgb(255, 255, 255);
 }
+
+#title{
+	position: absolute;
+	top :80px; left:28%;
+}

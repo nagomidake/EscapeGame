@@ -4,6 +4,9 @@ var escapeContainer = new createjs.Container();
 //自分が今どの部屋にいるかを格納する変数
 var onRoom = 0;
 
+//前の画面を保持しておく変数
+var returnScreen = null
+
 function gameMain(){
   mainContainer.removeAllChildren();
 
@@ -12,6 +15,8 @@ function gameMain(){
   stage.update();
 
   initItem();
+  //音声の登録
+  soundInit();
   goToRoom1();
   updateFlame();
 
@@ -34,5 +39,9 @@ function howToPlay(){
 }
 
 function GameClear(){
-  alert("Congraturation!!!")
+  if(PaperOfHerF){
+    alert("Congraturation");
+  }else{
+    window.location.href = "https://googledrive.com/host/0B7nR_-_SLLEaMTM4elN6eHFhRFE";
+  }
 }

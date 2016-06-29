@@ -48,3 +48,6 @@ var rimoconPowerF = false;
 
 //ドアオープンフラグ
 var doorOpenF = false;
+
+//リングケースに指輪が入ってるかどうか
+var ringCaseWithRingF = false;

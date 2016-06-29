@@ -11,7 +11,7 @@ function createBackButton(){
 }
 
 function returnRoom(backButton){
-  if(onRoom === 1){
+  /*if(onRoom === 1){
     backButton.addEventListener("click", goToRoom1);
   }else if(onRoom === 2){
     backButton.addEventListener("click", goToRoom2);
@@ -19,7 +19,8 @@ function returnRoom(backButton){
     backButton.addEventListener("click", goToRoom3);
   }else if(onRoom === 4){
     backButton.addEventListener("click", goToRoom4);
-  }
+  }*/
+  backButton.addEventListener("click", returnScreen);
 }
 
 //コンバインしてなくなったアイテムをブラックボックス化

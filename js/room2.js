@@ -4,6 +4,8 @@ function goToRoom2(){
   mainContainer.addChild(escapeContainer);
 
   onRoom = 2;
+  returnScreen = function (){goToRoom2()};
+
 
   //部屋の画像を表示
   var room2Bmp = new createjs.Bitmap("images/Room2.png");
@@ -53,6 +55,8 @@ function goToRoom2(){
 }
 
 function goToBed(){
+  returnScreen = function (){goToBed()};
+
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
@@ -86,6 +90,8 @@ function goToBed(){
 }
 
 function goToWindow(){
+  returnScreen = function (){goToWindow()};
+
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
@@ -99,6 +105,7 @@ function goToWindow(){
   openCurtain.y = 40;
   escapeContainer.addChild(openCurtain);
 
+  curtainSound = true;
   //イベント登録
   openCurtain.addEventListener("click", goOpenCurtain);
 
@@ -113,12 +120,19 @@ function goToWindow(){
 
 }
 
+var curtainSound = true;
+
 function goOpenCurtain(){
+  returnScreen = function (){goOpenCurtain()};
+
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
+  if(curtainSound){
+    playSound("Curtain");
+  }
 
-  playSound("Curtain");
+  curtainSound = false;
 
   if(CutterF && !airconONF){
     var mainBmp = new createjs.Bitmap("images/Window_Open_NoCutter.png");
@@ -146,6 +160,26 @@ function goOpenCurtain(){
     toGetCutter.addEventListener("click", getCutter);
   }
 
+  if(airconONF){
+    //窓を見るための領域
+    var lookWindow = new createMoveButton("", 200, 200, "rgba(255, 255, 255, 0)");
+    lookWindow.x = 320;
+    lookWindow.y = 220;
+    escapeContainer.addChild(lookWindow);
+    lookWindow.addEventListener("click", function(){
+      showMessage("文字が浮かび上がっている");
+    });
+  }else{
+    //窓を見るための領域
+    var lookWindow = new createMoveButton("", 200, 200, "rgba(255, 255, 255, 0)");
+    lookWindow.x = 320;
+    lookWindow.y = 220;
+    escapeContainer.addChild(lookWindow);
+    lookWindow.addEventListener("click", function(){
+      showMessage("外は雨だ");
+    });
+  }
+
 
   //イベント登録
   raisePot.addEventListener("click", goRaisePot);
@@ -155,13 +189,15 @@ function goOpenCurtain(){
   escapeContainer.addChild(backButton);
 
   //ボタンクリック時のイベント登録
-  backButton.addEventListener("click", goToRoom2);
+  backButton.addEventListener("click", goToWindow);
 
   mainContainer.addChild(escapeContainer);
 
 }
 
 function goRaisePot(){
+  returnScreen = function (){goRaisePot()};
+
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
@@ -201,13 +237,15 @@ function goRaisePot(){
   escapeContainer.addChild(backButton);
 
   //ボタンクリック時のイベント登録
-  backButton.addEventListener("click", goToRoom2);
+  backButton.addEventListener("click", goOpenCurtain);
 
   mainContainer.addChild(escapeContainer);
 
 }
 
 function goEastLookPaper(){
+  returnScreen = function (){goEastLookPaper()};
+
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
@@ -222,13 +260,15 @@ function goEastLookPaper(){
   escapeContainer.addChild(backButton);
 
   //ボタンクリック時のイベント登録
-  backButton.addEventListener("click", goToRoom2);
+  backButton.addEventListener("click", goOpenCurtain);
 
   mainContainer.addChild(escapeContainer);
 
 }
 
 function goToPicture(){
+  returnScreen = function (){goToPicture()};
+
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
@@ -262,6 +302,8 @@ function goToPicture(){
 }
 
 function goRemoveScrew(){
+  returnScreen = function (){goRemoveScrew()};
+
   if(selectItemName == "ScrewDriver"){
     removeScrewF = true;
   }
@@ -271,10 +313,19 @@ function goRemoveScrew(){
     escapeContainer.removeAllChildren();
     mainContainer.addChild(escapeContainer);
 
-    if(KeyOfDoorF){
+    if(doorOpenF && !RingCaseF){
+      var mainBmp = new createjs.Bitmap("images/ANA_LingCase.png");
+      escapeContainer.addChild(bmpScaler(mainBmp));
+      //ケースを取るための領域
+      var toGetRingCase = new createMoveButton("", 100, 120, "rgba(255, 255, 255, 0)");
+      toGetRingCase.x = 350;
+      toGetRingCase.y = 200;
+      escapeContainer.addChild(toGetRingCase);
+      toGetRingCase.addEventListener("click", getRingCase);
+    }else if((KeyOfDoorF && !doorOpenF) || (RingCaseF)){
       var mainBmp = new createjs.Bitmap("images/KAIGA_Change_NoKye.png");
       escapeContainer.addChild(bmpScaler(mainBmp));
-    }else{
+    }else if(!KeyOfDoorF){
       var mainBmp = new createjs.Bitmap("images/KAIGA_Change_OnKye.png");
       escapeContainer.addChild(bmpScaler(mainBmp));
       //鍵を取るための領域
@@ -290,7 +341,7 @@ function goRemoveScrew(){
     escapeContainer.addChild(backButton);
 
     //ボタンクリック時のイベント登録
-    backButton.addEventListener("click", goToRoom2);
+    backButton.addEventListener("click", goToPicture);
 
     mainContainer.addChild(escapeContainer);
   }else{

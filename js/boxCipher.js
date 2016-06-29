@@ -6,7 +6,7 @@ function boxCipher(event, color){
   playSound("ClickButton");
   CBO.push(color);
   if(CBO.toString() == CorrectCBO.toString()){
-    boxvCipherF = true;
+    boxCipherF = true;
     playSound("Success");
     alert("開いたようだ");
     goOpenBox();

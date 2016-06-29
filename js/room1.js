@@ -4,9 +4,8 @@ function goToRoom1(){
   mainContainer.addChild(escapeContainer);
 
   onRoom = 1;
-  CTO.length = 0;
-  CBO.length = 0;
-  boxWithCompassF = false;
+
+  returnScreen = function (){goToRoom1()};
 
   //部屋の画像を表示
   var room1Bmp = new createjs.Bitmap("images/Room1.png");
@@ -55,6 +54,8 @@ function goToRoom1(){
 }
 
 function goToDoor(){
+  returnScreen = function (){goToDoor()};
+
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
@@ -86,6 +87,8 @@ function openDoor(){
   }
 
   if(doorOpenF){
+    returnScreen = function (){openDoor()};
+
     //上画面の子要素をすべて消す
     escapeContainer.removeAllChildren();
     mainContainer.addChild(escapeContainer);
@@ -105,7 +108,7 @@ function openDoor(){
     escapeContainer.addChild(backButton);
 
     //ボタンクリック時のイベント登録
-    backButton.addEventListener("click", goToRoom1);
+    backButton.addEventListener("click", goToDoor);
 
     mainContainer.addChild(escapeContainer);
   }else{
@@ -115,6 +118,11 @@ function openDoor(){
 }
 
 function goToBookshelf(){
+  CTO.length = 0;
+  DrawerSoundF = true;
+
+  returnScreen = function (){goToBookshelf()};
+
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
@@ -171,6 +179,8 @@ function goToBookshelf(){
 }
 
 function goToBooks(){
+  returnScreen = function (){goToBooks()};
+
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
@@ -191,7 +201,7 @@ function goToBooks(){
   toBooksOpen.addEventListener("click", goToBooksOpen);
 
   //ボタンクリック時のイベント登録
-  backButton.addEventListener("click", goToRoom1);
+  backButton.addEventListener("click", goToBookshelf);
 
   mainContainer.addChild(escapeContainer);
 }
@@ -203,6 +213,8 @@ function goToBooksOpen(){
     }
 
     if(BookOpenF){
+      returnScreen = function (){goToBooksOpen()};
+
       //上画面の子要素をすべて消す
       escapeContainer.removeAllChildren();
       mainContainer.addChild(escapeContainer);
@@ -223,7 +235,7 @@ function goToBooksOpen(){
       toRaiseBook.addEventListener("click", raiseBook);
 
       //ボタンクリック時のイベント登録
-      backButton.addEventListener("click", goToRoom1);
+      backButton.addEventListener("click", goToBooks);
 
       mainContainer.addChild(escapeContainer);
     }else{
@@ -232,6 +244,8 @@ function goToBooksOpen(){
 }
 
 function raiseBook(){
+  returnScreen = function (){raiseBook()};
+
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
@@ -252,12 +266,14 @@ function raiseBook(){
   lookPaper.addEventListener("click", goLookNorthPaper);
 
   //ボタンクリック時のイベント登録
-  backButton.addEventListener("click", goToRoom1);
+  backButton.addEventListener("click", goToBooks);
 
   mainContainer.addChild(escapeContainer);
 }
 
 function goLookNorthPaper(){
+  returnScreen = function (){goLookNorthPaper()};
+
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
@@ -272,7 +288,7 @@ function goLookNorthPaper(){
   escapeContainer.addChild(backButton);
 
   //ボタンクリック時のイベント登録
-  backButton.addEventListener("click", goToRoom1);
+  backButton.addEventListener("click", raiseBook);
 
   mainContainer.addChild(escapeContainer);
 }
@@ -281,6 +297,8 @@ function goToHighShelf(){
   if(arrowCipherF){
     goToOpenHighShelf();
   }else{
+    returnScreen = function (){goToHighShelf()};
+
     //上画面の子要素をすべて消す
     escapeContainer.removeAllChildren();
     mainContainer.addChild(escapeContainer);
@@ -323,18 +341,25 @@ function goToHighShelf(){
     toLeftArrow.on("click", arrowCipher, null, false, "L");
 
     //ボタンクリック時のイベント登録
-    backButton.addEventListener("click", goToRoom1);
+    backButton.addEventListener("click", goToBookshelf);
 
     mainContainer.addChild(escapeContainer);
   }
 }
 
+var DrawerSoundF = true;
+
 function goToOpenHighShelf(){
+  returnScreen = function (){goToOpenHighShelf()};
+
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
 
-  playSound("Drawer");
+  if(DrawerSoundF){
+    playSound("Drawer");
+    DrawerSoundF = false;
+  }
 
   if(CalcuratorF && KeyOfClosetF){
     var mainBmp = new createjs.Bitmap("images/HONDANA_Right1_Open_AllNothing.png");
@@ -369,7 +394,7 @@ function goToOpenHighShelf(){
   toGetKey.addEventListener("click", getKey2);
 
   //ボタンクリック時のイベント登録
-  backButton.addEventListener("click", goToRoom1);
+  backButton.addEventListener("click", goToBookshelf);
 
   mainContainer.addChild(escapeContainer);
 }
@@ -378,6 +403,8 @@ function goToMidShelf(){
   if(NumberCipherF){
     openMidShelf();
   }else{
+    returnScreen = function (){goToMidShelf()};
+
     //上画面の子要素をすべて消す
     escapeContainer.removeAllChildren();
     mainContainer.addChild(escapeContainer);
@@ -419,18 +446,23 @@ function goToMidShelf(){
     incCodeNum4.addEventListener("click", incNum4);
 
     //ボタンクリック時のイベント登録
-    backButton.addEventListener("click", goToRoom1);
+    backButton.addEventListener("click", goToBookshelf);
 
     mainContainer.addChild(escapeContainer);
   }
 }
 
 function openMidShelf(){
+  returnScreen = function (){openMidShelf()};
+
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
 
-  playSound("Drawer");
+  if(DrawerSoundF){
+    playSound("Drawer");
+    DrawerSoundF = false;
+  }
 
   if(CompassF){
     var mainBmp = new createjs.Bitmap("images/HONDANA_Right2_Open_NoCompass.png");
@@ -451,17 +483,22 @@ function openMidShelf(){
   escapeContainer.addChild(backButton);
 
   //ボタンクリック時のイベント登録
-  backButton.addEventListener("click", goToRoom1);
+  backButton.addEventListener("click", goToBookshelf);
 
   mainContainer.addChild(escapeContainer);
 }
 
 function goToLowShelf(){
+  returnScreen = function (){goToLowShelf()};
+
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
 
-  playSound("Drawer");
+  if(DrawerSoundF){
+    playSound("Drawer");
+    DrawerSoundF = false;
+  }
 
   if(DVDCaseF && DVDPaperF){
     var mainBmp = new createjs.Bitmap("images/HONDANA_Right3_Open_AllNothing.png");
@@ -502,12 +539,17 @@ function goToLowShelf(){
 
 
   //ボタンクリック時のイベント登録
-  backButton.addEventListener("click", goToRoom1);
+  backButton.addEventListener("click", goToBookshelf);
 
   mainContainer.addChild(escapeContainer);
 }
 
 function goToOnShelf(){
+  CBO.length = 0;
+  boxWithCompassF = false;
+
+  returnScreen = function (){goToOnShelf()};
+
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
@@ -545,7 +587,7 @@ function goToOnShelf(){
   toBox.addEventListener("click", goToBox);
 
   //ボタンクリック時のイベント登録
-  backButton.addEventListener("click", goToRoom1);
+  backButton.addEventListener("click", goToBookshelf);
 
   mainContainer.addChild(escapeContainer);
 }
@@ -554,6 +596,8 @@ function goToBox(){
   if(boxCipherF){
     goOpenBox();
   }else{
+    returnScreen = function (){goToBox()};
+
     //上画面の子要素をすべて消す
     escapeContainer.removeAllChildren();
     mainContainer.addChild(escapeContainer);
@@ -573,7 +617,7 @@ function goToBox(){
     putCompass.addEventListener("click", boxWithCompass);
 
     //ボタンクリック時のイベント登録
-    backButton.addEventListener("click", goToRoom1);
+    backButton.addEventListener("click", goToOnShelf);
 
     mainContainer.addChild(escapeContainer);
   }
@@ -585,6 +629,8 @@ function boxWithCompass(){
   }
 
   if(boxWithCompassF){
+    returnScreen = function (){boxWithCompass()};
+
     //上画面の子要素をすべて消す
     escapeContainer.removeAllChildren();
     mainContainer.addChild(escapeContainer);
@@ -627,7 +673,7 @@ function boxWithCompass(){
 
 
     //ボタンクリック時のイベント登録
-    backButton.addEventListener("click", goToRoom1);
+    backButton.addEventListener("click", goToOnShelf);
 
     mainContainer.addChild(escapeContainer);
   }else{
@@ -636,6 +682,8 @@ function boxWithCompass(){
 }
 
 function goOpenBox(){
+  returnScreen = function (){goOpenBox()};
+
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
@@ -660,7 +708,7 @@ function goOpenBox(){
   escapeContainer.addChild(backButton);
 
   //ボタンクリック時のイベント登録
-  backButton.addEventListener("click", goToRoom1);
+  backButton.addEventListener("click", goToOnShelf);
 
   mainContainer.addChild(escapeContainer);
 }

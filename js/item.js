@@ -17,7 +17,7 @@ var ScrewDriver = new createjs.Bitmap("images/ScrewDriver.png");
 var RingCase = new createjs.Bitmap("images/LingCase.png");
 var Diary = new createjs.Bitmap("images/Diary.png");
 var KeyOfDoor = new createjs.Bitmap("images/Key3.png");
-//var PaperOfHer = new createjs.Bitmap("");
+var PaperOfHer = new createjs.Bitmap("images/4ORI.png");
 
 var itemList = new Array();
 
@@ -487,4 +487,58 @@ function getDoorKey(){
 
   itemContainer.addChild(selectButton);
   goRemoveScrew();
+}
+
+function getRingCase(){
+  playSound("itemGet");
+  RingCaseF = true;
+
+  thisItem = itemList[14];
+
+  thisItem.image = RingCase.image;
+  thisItem.scaleX = 0.075;
+  thisItem.scaleY = 0.133;
+
+  //セレクトできる領域
+  var selectButton = createSelectButton();
+  selectButton.x = thisItem.x;
+  selectButton.y = thisItem.y;
+
+  //itemSelectの引数に渡すためのオブジェクト
+  var argObj = new Object();
+  argObj[0] = "RingCase";
+  argObj[1] = thisItem;
+  argObj[2] = selectButton;
+
+  selectButton.on("click", itemSelect, null, false, argObj);
+
+  itemContainer.addChild(selectButton);
+  goRemoveScrew();
+}
+
+function getHerPaper(){
+  playSound("itemGet");
+  PaperOfHerF = true;
+
+  thisItem = itemList[15];
+
+  thisItem.image = PaperOfHer.image;
+  thisItem.scaleX = 0.075;
+  thisItem.scaleY = 0.133;
+
+  //セレクトできる領域
+  var selectButton = createSelectButton();
+  selectButton.x = thisItem.x;
+  selectButton.y = thisItem.y;
+
+  //itemSelectの引数に渡すためのオブジェクト
+  var argObj = new Object();
+  argObj[0] = "PaperOfHer";
+  argObj[1] = thisItem;
+  argObj[2] = selectButton;
+
+  selectButton.on("click", itemSelect, null, false, argObj);
+
+  itemContainer.addChild(selectButton);
+  openRingCase();
 }

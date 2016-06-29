@@ -3,6 +3,9 @@
 function itemDetail(selectItem, toItemClick){
 
   switch (selectItem.image) {
+    case Ring.image:
+      toItemClick.addEventListener("click", ring);
+      break;
     case DVDCase.image:
       toItemClick.addEventListener("click", dvdCase);
       break;
@@ -18,10 +21,17 @@ function itemDetail(selectItem, toItemClick){
     case Diary.image:
       toItemClick.addEventListener("click", diary);
       break;
+    case RingCase.image:
+      toItemClick.addEventListener("click", ringCase);
+      break;
 
     default:
 
   }
+}
+
+function ring(){
+  showMessage("彼女の為に買った指輪だ");
 }
 
 function dvdCase(){
@@ -74,7 +84,7 @@ function dvdPaper(){
 
     mainContainer.addChild(escapeContainer);
   }else{
-    showMessage("切り取るための丸が書かれている");
+    showMessage("切り取れそうな丸が書かれている");
   }
 }
 
@@ -148,7 +158,7 @@ function insertAAbattery(){
     escapeContainer.addChild(bmpScaler(mainBmp));
 
     showMessage("電池を入れた");
-    
+
     //バックボタン
     var backButton = createBackButton();
     escapeContainer.addChild(backButton);
@@ -229,6 +239,108 @@ function diary(){
 
   var mainBmp = new createjs.Bitmap("images/Diary_Open.png");
   escapeContainer.addChild(bmpScaler(mainBmp));
+
+  showMessage("彼女の日記だ");
+
+  //バックボタン
+  var backButton = createBackButton();
+  escapeContainer.addChild(backButton);
+
+  //ボタンクリック時のイベント登録
+  returnRoom(backButton);
+
+  mainContainer.addChild(escapeContainer);
+}
+
+function ringCase(){
+  if(selectItemName == "Ring"){
+    ringCaseWithRingF = true;
+    changeBlackBox(itemList[0]);
+
+    itemList[14].image = new createjs.Bitmap("images/LingCase_OnLing.png").image;
+    RingCase.image = new createjs.Bitmap("images/LingCase_OnLing.png").image;
+  }
+
+  if(ringCaseWithRingF){
+    //上画面の子要素をすべて消す
+    escapeContainer.removeAllChildren();
+    mainContainer.addChild(escapeContainer);
+
+    var mainBmp = new createjs.Bitmap("images/LingCase_OnLing.png");
+    escapeContainer.addChild(bmpScaler(mainBmp));
+
+    showMessage("指輪をはめた");
+
+    //アイテムクリック用の領域
+    var toItemClick = new createMoveButton("", 350, 350, "rgba(255, 255, 255, 0)");
+    toItemClick.x = 230;
+    toItemClick.y = 80;
+    escapeContainer.addChild(toItemClick);
+    toItemClick.addEventListener("click", detailRingCase);
+
+    //バックボタン
+    var backButton = createBackButton();
+    escapeContainer.addChild(backButton);
+
+    //ボタンクリック時のイベント登録
+    returnRoom(backButton);
+
+    mainContainer.addChild(escapeContainer);
+  }else{
+      detailRingCase();
+  }
+}
+
+function detailRingCase(){
+  //上画面の子要素をすべて消す
+  escapeContainer.removeAllChildren();
+  mainContainer.addChild(escapeContainer);
+
+  var mainBmp = new createjs.Bitmap("images/LingCase_URA.png");
+  escapeContainer.addChild(bmpScaler(mainBmp));
+
+  //アイテムクリック用の領域
+  var toItemClick = new createMoveButton("", 350, 350, "rgba(255, 255, 255, 0)");
+  toItemClick.x = 230;
+  toItemClick.y = 80;
+  escapeContainer.addChild(toItemClick);
+  toItemClick.addEventListener("click", openRingCase);
+
+  //バックボタン
+  var backButton = createBackButton();
+  escapeContainer.addChild(backButton);
+
+  //ボタンクリック時のイベント登録
+  returnRoom(backButton);
+
+  mainContainer.addChild(escapeContainer);
+}
+
+function openRingCase(){
+  if(ringCaseWithRingF && !PaperOfHerF){
+    //上画面の子要素をすべて消す
+    escapeContainer.removeAllChildren();
+    mainContainer.addChild(escapeContainer);
+
+    var mainBmp = new createjs.Bitmap("images/LingCase_URA_InPaper.png");
+    escapeContainer.addChild(bmpScaler(mainBmp));
+
+    //アイテムクリック用の領域
+    var toItemClick = new createMoveButton("", 350, 350, "rgba(255, 255, 255, 0)");
+    toItemClick.x = 230;
+    toItemClick.y = 80;
+    escapeContainer.addChild(toItemClick);
+    toItemClick.addEventListener("click", getHerPaper);
+  }else if(PaperOfHerF){
+    //上画面の子要素をすべて消す
+    escapeContainer.removeAllChildren();
+    mainContainer.addChild(escapeContainer);
+
+    var mainBmp = new createjs.Bitmap("images/LingCase_URA_Open.png");
+    escapeContainer.addChild(bmpScaler(mainBmp));
+  }else{
+    showMessage("開きそうなくぼみがあるが開かない")
+  }
 
   //バックボタン
   var backButton = createBackButton();

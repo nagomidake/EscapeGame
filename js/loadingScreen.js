@@ -1,8 +1,10 @@
-var completeDiv = document.getElementById("complete");
+var body = document.body;
+
 var loadingDiv = document.getElementById("loading");
 var lodingPercent = document.getElementById("percent");
+var titleDiv = document.getElementById("title");
 
-completeDiv.style.visibility = "hidden";
+titleDiv.style.visibility = "hidden";
 
 function loadingScreen(per){
   loadingDiv.style.visibility = "visible";
@@ -12,5 +14,6 @@ function loadingScreen(per){
 }
 
 function completeScreen(){
-  loadingDiv.style.visibility = "hidden";
+  body.removeChild(loadingDiv);
+  titleDiv.style.visibility = "visible";
 }

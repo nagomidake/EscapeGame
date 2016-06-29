@@ -4,6 +4,8 @@ function goToRoom3(){
   mainContainer.addChild(escapeContainer);
 
   onRoom = 3;
+  returnScreen = function (){goToRoom3()};
+
 
   //部屋の画像を表示
   var room3Bmp = new createjs.Bitmap("images/Room3.png");
@@ -45,6 +47,8 @@ function goToRoom3(){
 }
 
 function goToAircon(){
+  returnScreen = function (){goToAircon()};
+
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
@@ -79,6 +83,7 @@ function goAirconOn(){
   }
 
   if(airconONF){
+    returnScreen = function (){goAirconOn()};
 
     //上画面の子要素をすべて消す
     escapeContainer.removeAllChildren();
@@ -103,6 +108,8 @@ function goAirconOn(){
 }
 
 function goToSofa(){
+  returnScreen = function (){goToSofa()};
+
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
@@ -129,6 +136,8 @@ function goToSofa(){
 }
 
 function goPillowUp(){
+  returnScreen = function (){goPillowUp()};
+
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
@@ -149,12 +158,14 @@ function goPillowUp(){
   lookPaper.addEventListener("click", goLookSouthPaper);
 
   //ボタンクリック時のイベント登録
-  backButton.addEventListener("click", goToRoom3);
+  backButton.addEventListener("click", goToSofa);
 
   mainContainer.addChild(escapeContainer);
 }
 
 function goLookSouthPaper(){
+  returnScreen = function (){goLookSouthPaper()};
+
   //上画面の子要素をすべて消す
   escapeContainer.removeAllChildren();
   mainContainer.addChild(escapeContainer);
@@ -169,7 +180,7 @@ function goLookSouthPaper(){
   escapeContainer.addChild(backButton);
 
   //ボタンクリック時のイベント登録
-  backButton.addEventListener("click", goToRoom3);
+  backButton.addEventListener("click", goToSofa);
 
   mainContainer.addChild(escapeContainer);
 
