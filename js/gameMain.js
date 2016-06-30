@@ -40,7 +40,7 @@ function howToPlay(){
 
 function GameClear(){
   if(PaperOfHerF){
-    alert("Congraturation");
+    window.location.href = "https://googledrive.com/host/0B7nR_-_SLLEaaGpQa2lQQTZTd00";
   }else{
     window.location.href = "https://googledrive.com/host/0B7nR_-_SLLEaMTM4elN6eHFhRFE";
   }
