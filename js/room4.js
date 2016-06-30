@@ -162,6 +162,7 @@ function openLeftCloset(){
 
   if(ClosetSoundF){
     playSound("Shelf");
+    ClosetSoundF = false;
   }
 
   if(ScrewDriverF){
@@ -235,6 +236,7 @@ function openRightCloset(){
 
     if(ClosetSoundF){
       playSound("Shelf");
+      ClosetSoundF = false;
     }
 
     if(NumberPaperF){

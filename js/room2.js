@@ -302,13 +302,14 @@ function goToPicture(){
 }
 
 function goRemoveScrew(){
-  returnScreen = function (){goRemoveScrew()};
 
   if(selectItemName == "ScrewDriver"){
     removeScrewF = true;
   }
 
   if(removeScrewF){
+    returnScreen = function (){goRemoveScrew()};
+    
     //上画面の子要素をすべて消す
     escapeContainer.removeAllChildren();
     mainContainer.addChild(escapeContainer);
